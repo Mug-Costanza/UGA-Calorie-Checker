@@ -50,6 +50,7 @@ function App() {
   return (
     <div className="App">
       <h1>UGA Calorie Count</h1>
+          <p>Take a picture of your favorite food.</p>
       <div className="camera">
         <video ref={videoRef}></video>
         <button onClick={takePicture}>Take Picture</button>
