@@ -19,17 +19,18 @@ function App() {
     // Check if the platform is iOS
     const isiOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
 
-    // The video can be loaded only after a user gesture on iOS
     if (isiOS) {
-      document.addEventListener('touchstart', handleTouchStart, { once: true });
+      // On iOS, use a user gesture (e.g., click) to request camera access
+      document.addEventListener("click", handleUserGesture, { once: true });
     } else {
+      // On other platforms, load the video directly
       loadVideo();
     }
   };
 
-  const handleTouchStart = () => {
-    // Remove the touchstart event listener
-    document.removeEventListener('touchstart', handleTouchStart);
+  const handleUserGesture = () => {
+    // Remove the user gesture event listener
+    document.removeEventListener("click", handleUserGesture);
 
     // Load the video after the user gesture
     loadVideo();
@@ -37,7 +38,7 @@ function App() {
 
   const loadVideo = () => {
     navigator.mediaDevices
-      .getUserMedia({ video: { facingMode: 'environment', width: 450, height: 700 } })
+      .getUserMedia({ video: true })
       .then((stream) => {
         let video = videoRef.current;
         video.srcObject = stream;
@@ -124,5 +125,6 @@ function App() {
 }
 
 export default App;
+
 
 
