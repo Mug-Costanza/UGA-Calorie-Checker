@@ -16,24 +16,24 @@ function App() {
   const meals = ["Breakfast", "Lunch", "Dinner"];
 
   const getVideo = () => {
+  // Check if the platform is iOS
+  const isiOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+
   if (isiOS) {
     // On iOS, display a message prompting the user to tap the screen
     const message = document.createElement('p');
     message.textContent = 'Tap the screen to activate the camera';
     message.style.position = 'absolute';
-    message.style.top = '50%'; // Adjust the top position as needed
-    message.style.left = '50%'; // Adjust the left position as needed
-    message.style.transform = 'translate(-50%, -50%)';
+    message.style.top = '70%';
+    message.style.left = '70%';
+    message.style.transform = 'translate(-70%, -70%)';
     message.style.zIndex = '1000';
-    
-    // Append the message directly within the camera div
-    const cameraDiv = document.querySelector('.camera');
-    cameraDiv.appendChild(message);
+    document.body.appendChild(message);
 
     // Add a click event listener to remove the message and request camera access
     const handleTap = () => {
       document.removeEventListener('click', handleTap);
-      cameraDiv.removeChild(message);
+      document.body.removeChild(message);
       loadVideo();
     };
 
@@ -211,4 +211,3 @@ function App() {
           };
 
           export default App;
-
