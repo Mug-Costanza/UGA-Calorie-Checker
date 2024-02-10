@@ -37,27 +37,33 @@ function App() {
   };
 
   const loadVideo = () => {
-    navigator.mediaDevices
-      .getUserMedia({ video: true })
-      .then((stream) => {
-        let video = videoRef.current;
-        video.srcObject = stream;
+  navigator.mediaDevices
+    .getUserMedia({ video: true })
+    .then((stream) => {
+      let video = videoRef.current;
+      video.srcObject = stream;
 
-        // Wait for the loadedmetadata event before playing
-        video.addEventListener('loadedmetadata', () => {
-          video.play().catch((error) => {
-            console.error('Error playing video:', error);
-          });
+      // Set the playsinline attribute for iOS
+      if (/(iPad|iPhone|iPod)/.test(navigator.userAgent) && video) {
+        video.setAttribute('playsinline', 'true');
+        video.setAttribute('controls', 'true'); // Add controls for better user interaction
+      }
+
+      // Wait for the loadedmetadata event before playing
+      video.addEventListener('loadedmetadata', () => {
+        video.play().catch((error) => {
+          console.error('Error playing video:', error);
         });
-
-        // Clear any previous error state
-        setVideoError(false);
-      })
-      .catch((err) => {
-        console.error(err);
-        setVideoError(true);
       });
-  };
+
+      // Clear any previous error state
+      setVideoError(false);
+    })
+    .catch((err) => {
+      console.error(err);
+      setVideoError(true);
+    });
+};
 
   useEffect(() => {
     getVideo();
