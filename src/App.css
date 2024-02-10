@@ -19,11 +19,35 @@ body {
 
 h1 {
   color: #333;
-  margin-top: 150px;
+  margin-top: 250px;
 }
 
 p {
     color: gray;
+}
+
+.dropdowns {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.dropdown {
+  margin: 0 10px;
+}
+
+label {
+  color: #333;
+  font-size: 14px;
+}
+
+select {
+  width: 150px;
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #f9f9f9;
 }
 
 .camera {
