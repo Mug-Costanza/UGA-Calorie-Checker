@@ -142,6 +142,7 @@ function App() {
     };
 
   return (
+    <div className = "container">
     <div className="App">
       <h1>UGA Calorie Count</h1>
       <p>Take a picture of your favorite food.</p>
@@ -205,6 +206,7 @@ function App() {
                 </div>
                 <div className={`result ${hasPhoto ? 'hasPhoto' : ''}`}>
                   {/* Removed canvas element */}
+                </div>
                 </div>
               </div>
             );
