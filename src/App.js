@@ -14,6 +14,8 @@ function App() {
   const daysOfWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
   const meals = ["Breakfast", "Lunch", "Dinner"];
 
+document.title = "UGA Calorie Count";
+    
   const getVideo = () => {
     navigator.mediaDevices.getUserMedia({ video: { width: 450, height: 700 } }).then(stream => {
       let video = videoRef.current;
