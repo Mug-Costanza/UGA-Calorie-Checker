@@ -150,7 +150,6 @@ function App() {
         </div>
       )}
     </div>
-
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const video = document.getElementById('camera');
