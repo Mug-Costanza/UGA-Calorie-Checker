@@ -1,7 +1,8 @@
-
 body {
-  font-family: 'Arial', sans-serif;
-  background-color: #cc0000; /* UGA Red */
+  font-family: 'Georgia', sans-serif; /* Change font-family to Georgia */
+  background-size: cover;
+  background-image: url(https://images.squarespace-cdn.com/content/v1/5c6090f7815512cc3c2008d4/1551053117928-E97Y685OM82ELE77LDVS/UGABDC-georgia-bolton-dining-10-dining-7686-M.jpg?format=1500w); /*Changed background aesthetic to appeal to users */
+  background-position: center;
   margin: 0;
   display: flex;
   align-items: center;
@@ -13,68 +14,46 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 30vh;
+  background-color: rgba(255, 255, 255, 0.9); /* Add a semi-transparent white background to improve text readability */
+  border: 2px solid black; /* Add a black border with a thickness of 2px */
 }
+
+
 
 .App {
   text-align: center;
-  background-color: #ffffff; /* White */
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-top: none; /* Remove the top border */
+  border-bottom: none; /* Remove the bottom border */
 }
 
 h1 {
-  color: #333;
+  font-family: 'Georgia', sans-serif; /* Change font-family to Roboto */
+  font-size: 30px; /* Increase font size */
+  font-weight: bold; /* Make the title bolder */
 }
 
 p {
-    color: gray;
+  color: red;
 }
 
-.dropdowns {
-  display: flex;
-  justify-content: space-around;
-  margin-bottom: 20px;
-}
-
-.dropdown {
-  margin: 0 10px;
-}
-
-label {
-  color: #333;
-  font-size: 14px;
-}
-
-select {
-  width: 150px;
-  padding: 8px;
-  font-size: 14px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  background-color: #f9f9f9;
-}
-
-.camera {
-  margin: 20px 0;
-}
-
-video {
-  width: 100%;
-  max-width: 450px;
-  border-radius: 8px;
-}
-
-button {
-  background-color: #cc0000; /* UGA Dark Green */
-  color: #ffffff; /* White */
+button.take-picture {
+  color: #000; /* Black */
+  font-weight: bold; /* Making the font bolder */
+  background-color: black; /* UGA Red */
   padding: 10px 20px;
   font-size: 16px;
-  border: none;
+  border: black;
   cursor: pointer;
-  border-radius: 4px;
+  border-radius: 5px;
   margin-top: 10px;
+}
+
+button.take-picture:hover {
+  background-color: #990000; /* Darker shade of UGA Red */
 }
 
 .result {
@@ -92,6 +71,3 @@ canvas {
   border-radius: 8px;
   margin-top: 10px;
 }
-
-/* Add more styles as needed */
-
