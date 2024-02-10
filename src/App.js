@@ -38,7 +38,11 @@ function App() {
 
   const loadVideo = () => {
   navigator.mediaDevices
-    .getUserMedia({ video: true })
+    .getUserMedia({
+      video: {
+        facingMode: "environment", // Use "user" for front camera, "environment" for back camera
+      },
+    })
     .then((stream) => {
       let video = videoRef.current;
       video.srcObject = stream;
@@ -150,19 +154,6 @@ function App() {
         </div>
       )}
     </div>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const video = document.getElementById('camera');
-
-      navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } })
-        .then((stream) => {
-          video.srcObject = stream;
-        })
-        .catch((error) => {
-          console.error('Error accessing camera:', error);
-        });
-    });
-  </script>
   );
 }
 
