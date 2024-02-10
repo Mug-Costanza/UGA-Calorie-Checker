@@ -24,9 +24,9 @@ function App() {
     const message = document.createElement('p');
     message.textContent = 'Tap the screen to activate the camera';
     message.style.position = 'absolute';
-    message.style.top = '50%';
-    message.style.left = '50%';
-    message.style.transform = 'translate(-50%, -50%)';
+    message.style.top = '70%';
+    message.style.left = '70%';
+    message.style.transform = 'translate(-70%, -70%)';
     message.style.zIndex = '1000';
     document.body.appendChild(message);
 
@@ -211,5 +211,4 @@ function App() {
           };
 
           export default App;
-
 
