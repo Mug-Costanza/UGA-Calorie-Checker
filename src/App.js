@@ -144,8 +144,8 @@ function App() {
   return (
     <div className = "container">
     <div className="App">
-      <h1>UGA Calorie Count</h1>
-      <p>Take a picture of your favorite food.</p>
+      <h1>UGA CalTrack</h1>
+      <p>Take a picture of your current plate.</p>
           <div className="dropdowns">
                   <div className="dropdown">
                     <label htmlFor="diningCommon">Dining Common:</label>
