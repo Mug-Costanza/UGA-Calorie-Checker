@@ -36,6 +36,8 @@ function App() {
       cameraDiv.removeChild(message);
       loadVideo();
     };
+
+    document.addEventListener('click', handleTap, { once: true });
     } else {
       // On other platforms, load the video directly
       loadVideo();
