@@ -40,7 +40,7 @@ function App() {
       navigator.mediaDevices
         .getUserMedia({
           video: {
-            facingMode: "user", // Use "user" for front camera, "environment" for back camera
+            facingMode: "environment", // Use "user" for front camera, "environment" for back camera
           },
         })
         .then((stream) => {
