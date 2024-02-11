@@ -3,7 +3,7 @@ Names: Zachary Bunch,
 Purpose: To provide an easy and convenient way of counting calories.
 
 Problems that your team ran into and how your team overcame them
-- We could not get the webserver to communicate with the AI model.
+- We could not get the webserver to communicate with the AI model. We compromised by hosting the model locally.
 
 APIS:
 * React for frontend
