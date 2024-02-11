@@ -16,20 +16,13 @@ body {
   align-items: center;
   height: 30vh;
   background-color: rgba(255, 255, 255, 0.9); /* Add a semi-transparent white background to improve text readability */
-  border: 2px solid black; /* Add a black border with a thickness of 2px */
-}
-.small-image-container {
-  display: inline-block; /* Ensure the container does not span the full width */
-  margin-right: 10px; /* Add some spacing between the image and text */
+  border: 2px solid red; /* Add a black border with a thickness of 2px */
 }
 
 .small-image {
   width: 30px; /* Adjust width as needed */
   height: auto; /* Maintain aspect ratio */
-}
-
-.caltrack {
-  color: black; /* Set color of "CalTrack" to black */
+  margin-left: 10px; /* Add some spacing between the image and text */
 }
 
 
@@ -43,19 +36,30 @@ body {
 }
 
 h1 {
-  font-family: 'Georgia', sans-serif; /* Change font-family to Roboto */
+  font-family: 'Georgia', sans-serif; /* Change font-family to Georgia */
   font-size: 30px; /* Increase font size */
-  font-weight: bold; /* Make the title bolder */
+  font-weight: 800; /* Make the title bolder */
+  color: black; /* Set default color to black */
 }
 
+h1 .uga {
+  color: red; /* Set color of "UGA" to red */
+}
+
+h1 .caltrack {
+  color: black; /* Set color of "CalTrack" to black */
+}
+
+
 p {
-  color: red;
+
+  color: solid black;
 }
 
 button.take-picture {
   color: #000; /* Black */
   font-weight: bold; /* Making the font bolder */
-  background-color: black; /* UGA Red */
+  background-color: red; /* UGA Red */
   padding: 10px 20px;
   font-size: 16px;
   border: black;
@@ -65,7 +69,7 @@ button.take-picture {
 }
 
 button.take-picture:hover {
-  background-color: #990000; /* Darker shade of UGA Red */
+  background-color: red; /* Darker shade of UGA Red */
 }
 
 .result {
@@ -82,4 +86,13 @@ canvas {
   max-width: 450px;
   border-radius: 8px;
   margin-top: 10px;
+}
+.uga-logo {
+  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS375RHHMk_W-h2EVR1vsOBzeYiamAeurHwIfvwsEdVkjnTt66LGJh8NybpaW-LYYqqKE&usqp=CA"); /* Path to your UGA logo image */
+  background-size: contain; /* Ensure the logo fits within the span */
+  background-repeat: no-repeat; /* Prevent the logo from repeating */
+  display: inline-block; /* Allow for proper alignment with text */
+  width: 50px; /* Adjust width as needed */
+  height: 50px; /* Adjust height as needed */
+  margin-right: 10px; /* Add some spacing between the logo and the text */
 }
