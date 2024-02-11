@@ -28,7 +28,6 @@ const UGACalories = () => {
       const BMIResult = ((weight)/(heightInInches^2))*703;
       const BMResult = (13.397*weightinKGS) + (4.799*heightInInches) - (5.677 * age) + 88.362;
 
-      warning.print(BMIResult);
 
       // Navigate to the camera tab
       setAction("Snap");
@@ -331,9 +330,11 @@ const handleBlur = () => {
                           </select>
                       </div>
                   )}
+                  {action === "About You" && (
                   <div className="calculateButton">
                       <button onClick={handleCalculateAndNavigate}>Calculate and Go to Camera</button>
                   </div>
+                  )}
         {action === "Snap" && (
             <div className="aiCameraSection">
                 <div className="app">
