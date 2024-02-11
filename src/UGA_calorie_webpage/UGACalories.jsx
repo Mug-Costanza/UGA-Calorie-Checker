@@ -188,7 +188,7 @@ const handleBlur = () => {
 
     return (
        <div className="main">
-        <div className="title">UGA CalTrack</div>
+        <h1 className="title">UGA CalTrack</h1>
         <div className="header">
             <button className={action==="About You"?"submit":"submit gray"} onClick={()=>{setAction("About You")}}>About You</button>
             <button className={action==="Snap"?"submit":"submit gray"} onClick={()=>{setAction("Snap")}}>Snap</button>
@@ -287,7 +287,6 @@ const handleBlur = () => {
         {action === "Snap" && (
             <div className="aiCameraSection">
                 <div className="app">
-                    <h1>UGA CalTrack</h1>
                     <p>Take a picture of your current plate.</p>
                     <div className="camera">
                         <div>
