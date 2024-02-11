@@ -28,13 +28,13 @@ const UGACalories = () => {
       const BMIResult = ((weight)/(heightInInches^2))*703;
       const BMResult = (13.397*weightinKGS) + (4.799*heightInInches) - (5.677 * age) + 88.362;
 
-
+      
       // Navigate to the camera tab
       setAction("Snap");
   };
 
-    const feetOptions = Array.from({ length: 9 }, (_, i) => i + 3);
-    const inchesOptions = Array.from({ length: 12 }, (_, i) => i);
+  const feetOptions = Array.from({ length: 6 }, (_, i) => i + 2); // Range from 2 to 7
+  const inchesOptions = Array.from({ length: 12 }, (_, i) => i); // Range from 0 to 11
 
     const handleFeetChange = (e) => {
         setFeet(parseInt(e.target.value));
