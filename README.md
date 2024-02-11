@@ -1,4 +1,4 @@
-Names: Zachary Bunch, 
+Names: Zachary Bunch, Brennan Davenport, James Nguyen, Joshua Cherenfant
 
 Purpose: To provide an easy and convenient way of counting calories.
 
