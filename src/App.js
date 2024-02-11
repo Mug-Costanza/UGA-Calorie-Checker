@@ -146,32 +146,6 @@ function App() {
     <div className="App">
       <h1>UGA CalTrack</h1>
       <p>Take a picture of your current plate.</p>
-          <div className="dropdowns">
-                  <div className="dropdown">
-                    <label htmlFor="diningCommon">Dining Common:</label>
-                    <select id="diningCommon" value={selectedDiningCommon} onChange={(e) => setSelectedDiningCommon(e.target.value)}>
-                      {diningCommons.map((diningCommon) => (
-                        <option key={diningCommon} value={diningCommon}>{diningCommon}</option>
-                      ))}
-                    </select>
-                  </div>
-                  <div className="dropdown">
-                    <label htmlFor="dayOfWeek">Day of the Week:</label>
-                    <select id="dayOfWeek" value={selectedDay} onChange={(e) => setSelectedDay(e.target.value)}>
-                      {daysOfWeek.map((day) => (
-                        <option key={day} value={day}>{day}</option>
-                      ))}
-                    </select>
-                  </div>
-                  <div className="dropdown">
-                    <label htmlFor="meal">Meal:</label>
-                    <select id="meal" value={selectedMeal} onChange={(e) => setSelectedMeal(e.target.value)}>
-                      {meals.map((meal) => (
-                        <option key={meal} value={meal}>{meal}</option>
-                      ))}
-                    </select>
-                  </div>
-                </div>
           <div className="camera">
                   <div>
                     {videoError ? (
