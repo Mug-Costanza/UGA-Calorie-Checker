@@ -89,38 +89,34 @@ const handleBlur = () => {
       loadVideo();
     };
   
-      const loadVideo = () => {
-        navigator.mediaDevices
-          .getUserMedia({
-            video: {
-              facingMode: "environment", // Use "user" for front camera, "environment" for back camera
-            },
-          })
-          .then((stream) => {
-            let video = videoRef.current;
-            video.srcObject = stream;
-  
-            // Set the playsinline attribute for iOS
-            if (/(iPad|iPhone|iPod)/.test(navigator.userAgent) && video) {
-              video.setAttribute('playsinline', 'true');
-              video.setAttribute('controls', 'true'); // Add controls for better user interaction
-            }
-  
-            // Wait for the loadedmetadata event before playing
-            video.addEventListener('loadedmetadata', () => {
-              video.play().catch((error) => {
-                console.error('Error playing video:', error);
-              });
-            });
-  
-            // Clear any previous error state
-            setVideoError(false);
-          })
-          .catch((err) => {
-            console.error(err);
-            setVideoError(true);
-          });
-      };
+    const loadVideo = () => {
+        if (videoRef.current) {
+            // Pause the video before resetting
+            videoRef.current.pause();
+            // Reset the video source
+            videoRef.current.srcObject = null;
+            // Reset the hasPhoto state
+            setHasPhoto(false);
+    
+            navigator.mediaDevices.getUserMedia({ video: true })
+                .then((stream) => {
+                    videoRef.current.srcObject = stream;
+                    // Wait for the video to be loaded before attempting to play
+                    videoRef.current.onloadedmetadata = () => {
+                        videoRef.current.play().catch((error) => {
+                            console.error("Error playing video:", error);
+                            setVideoError(true);
+                        });
+                    };
+                })
+                .catch((error) => {
+                    console.error("Error accessing camera:", error);
+                    setVideoError(true);
+                });
+        } else {
+            console.error("Video reference is null");
+        }
+    };
   
       useEffect(() => {
         getVideo();
@@ -135,22 +131,28 @@ const handleBlur = () => {
             canvas.width = video.videoWidth;
             canvas.height = video.videoHeight;
           });
+        } else {
+            videoRef.current = document.createElement('video');
         }
-      }, [videoRef, photoRef]);
+      }, [videoRef.current, photoRef.current]);
   
       const takePicture = () => {
-        // Ensure that photoRef has been initialized before taking the picture
-        if (photoRef.current) {
-          const video = videoRef.current;
-          const canvas = photoRef.current;
-  
-          const context = canvas.getContext('2d');
-          context.drawImage(video, 0, 0, video.videoWidth, video.videoHeight);
-  
-          // Set the photo flag to true
-          setHasPhoto(true);
+        if (videoRef.current) {
+            const canvas = document.createElement('canvas');
+            canvas.width = videoRef.current.videoWidth;
+            canvas.height = videoRef.current.videoHeight;
+    
+            const context = canvas.getContext('2d');
+            context.drawImage(videoRef.current, 0, 0, canvas.width, canvas.height);
+    
+            // Assuming you have a photoRef to store the captured image
+            photoRef.current = canvas;
+    
+            // Update the hasPhoto state
+            setHasPhoto(true);
         }
-      };
+    };
+    
   
     const closeResult = () => {
       // Set the photo flag to false to hide the result section
@@ -177,9 +179,16 @@ const handleBlur = () => {
           loadVideo();
         }
       };
+    
+    useEffect(() => {
+        if (action === "Snap") {
+            loadVideo();
+        }
+    }, [action]);
 
     return (
        <div className="main">
+        <div className="title">UGA CalTrack</div>
         <div className="header">
             <button className={action==="About You"?"submit":"submit gray"} onClick={()=>{setAction("About You")}}>About You</button>
             <button className={action==="Snap"?"submit":"submit gray"} onClick={()=>{setAction("Snap")}}>Snap</button>
@@ -275,6 +284,7 @@ const handleBlur = () => {
                 </div>
             </div>
         )}
+        {action === "Snap" && (
             <div className="aiCameraSection">
                 <div className="app">
                     <h1>UGA CalTrack</h1>
@@ -312,6 +322,7 @@ const handleBlur = () => {
                     </div>
                 </div>
             </div>
+        )}
             <div className="statsSection"></div>
         </div>
        </div>
