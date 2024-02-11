@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
 import './UGAstyles.css'
-
+import axios from 'axios';
 
 const UGACalories = () => {
 
@@ -11,6 +11,10 @@ const UGACalories = () => {
 
     const [hasPhoto, setHasPhoto] = useState(false);
     const [videoError, setVideoError] = useState(false);
+    const [processedImageBlob, setProcessedImageBlob] = useState(null);
+
+    const [canvasImage, setCanvasImage] = useState(null);
+    const [predictedClass, setPredictedClass] = useState(null);
 
     const [feet, setFeet] = useState(0);
     const [inches, setInches] = useState(0);
@@ -18,6 +22,38 @@ const UGACalories = () => {
     const [gender, setGender] = useState('');
     const [activityLevel, setActivityLevel] = useState('');
     const [age, setAge] = useState('');
+
+
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+
+    reader.onload = (e) => {
+      setCanvasImage(e.target.result);
+    };
+
+    reader.readAsDataURL(file);
+  };
+
+  const processImage = async () => {
+    try {
+      // Create a FormData object to send the Blob
+      const formData = new FormData();
+      formData.append('canvasImage', processedImageBlob, 'image.png');
+  
+      // Send POST request to the Flask server
+      const response = await axios.post('http://127.0.0.1:5000/api/process_image', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+  
+      // Update state with the predicted class
+      setPredictedClass(response.data.predictedClass);
+    } catch (error) {
+      console.error('Error processing image:', error);
+    }
+  };
 
     const handleCalculateAndNavigate = () => {
       // Perform the math calculation using the information from the questions
@@ -51,6 +87,13 @@ const UGACalories = () => {
       setAction("Snap");
   };
 
+  const [firstButtonClicked, setFirstButtonClicked] = useState(false);
+
+  const handleFirstButtonClick = () => {
+    // Update the state when the first button is clicked
+    setFirstButtonClicked(true);
+  };
+  
   const feetOptions = Array.from({ length: 6 }, (_, i) => i + 2); // Range from 2 to 7
   const inchesOptions = Array.from({ length: 12 }, (_, i) => i); // Range from 0 to 11
 
@@ -195,13 +238,20 @@ const handleBlur = () => {
     
             // Assuming you have a photoRef to store the captured image
             photoRef.current = canvas;
-    
+            
+            canvas.toBlob((blob) => {
+                // Update the state with the Blob
+                setProcessedImageBlob(blob);
+            });
+
             // Update the hasPhoto state
             setHasPhoto(true);
+
+            setFirstButtonClicked(true);
         }
     };
     
-  
+
     const closeResult = () => {
       // Set the photo flag to false to hide the result section
       setHasPhoto(false);
@@ -386,6 +436,17 @@ const handleBlur = () => {
                                     )}
                                 </div>
                             )}
+                        </div>
+                        <div className="App">
+                            {firstButtonClicked && (
+                            <button onClick={processImage}>Process Image</button>
+                            )}
+                                {predictedClass && (
+                                    <div>
+                                        <h2>Predicted Class</h2>
+                                        <p>{predictedClass}</p>
+                                    </div>
+                                )}
                         </div>
                         <div>
                             {hasPhoto ? (
