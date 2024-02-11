@@ -186,96 +186,95 @@ const handleBlur = () => {
             <button className={action==="Your Stats"?"submit":"submit gray"} onClick={()=>{setAction("Your Stats")}}>Your Stats</button>
         </div>
         <div className="child">
-            <div className="userInputSection"></div>
-            {action === "About You" && (
-                    <div>
-                        <h2>User Input</h2>
-                        <div>
-                            {/* Dropdown for feet */}
-                            <label htmlFor="feet">Feet:</label>
-                            <select id="feet" value={feet} onChange={handleFeetChange}>
-                                {feetOptions.map((option) => (
-                                    <option key={option} value={option}>
-                                        {option}
-                                    </option>
-                                ))}
-                            </select>
-                            {/* Dropdown for inches */}
-                            <label htmlFor="inches">Inches:</label>
-                            <select id="inches" value={inches} onChange={handleInchesChange}>
-                                {inchesOptions.map((option) => (
-                                    <option key={option} value={option}>
-                                        {option}
-                                    </option>
-                                ))}
-                            </select>
-                        </div>
-                        <div>
-                            {/* Display the selected height */}
-                            <p>Selected Height: {feet} feet {inches} inches</p>
-                        </div>
-                    </div>
-                )}
-                {/* New question about weight */}
-                {action === "About You" && (
-                    <>
-                        <h2>Weight</h2>
-                        <div>
-                            <label htmlFor="weight">Weight (in lbs):</label>
-                            <input
-                                type="number"
-                                id="weight"
-                                value={weight}
-                                onChange={handleWeightChange}
-                                onBlur={handleBlur}
-                                min={50}
-                                max={600}
-                            />
-                            {/* Display warning message if weight is less than 50 */}
-                            {weight < 50 && (
-                                <p style={{ color: 'red', marginTop: '5px' }}>
-                                    Please enter a weight greater than or equal to 50 lbs.
-                                </p>
-                            )}
-                        </div>
-                    </>
-                )}
-                // Inside the div where the second question ends
-{action === "About You" && (
-    <div>
-        <h2>Gender</h2>
-        <p>What is your biological gender?</p>
-        <div>
-            <label>
-                <input
-                    type="checkbox"
-                    value="Male"
-                    checked={gender === "Male"}
-                    onChange={(e) => setGender(e.target.checked ? "Male" : "")}
-                />
-                Male
-            </label>
-            <label>
-                <input
-                    type="checkbox"
-                    value="Female"
-                    checked={gender === "Female"}
-                    onChange={(e) => setGender(e.target.checked ? "Female" : "")}
-                />
-                Female
-            </label>
-            <label>
-                <input
-                    type="checkbox"
-                    value="Do not specify"
-                    checked={gender === "Do not specify"}
-                    onChange={(e) => setGender(e.target.checked ? "Do not specify" : "")}
-                />
-                Do not specify
-            </label>
-        </div>
-    </div>
-)}
+        <div className="userInputSection"></div>
+        {action === "About You" && (
+            <div>
+                <h2>User Input</h2>
+                <div>
+                    {/* Dropdown for feet */}
+                    <label htmlFor="feet">Feet:</label>
+                    <select id="feet" value={feet} onChange={handleFeetChange}>
+                        {feetOptions.map((option) => (
+                            <option key={option} value={option}>
+                                {option}
+                            </option>
+                        ))}
+                    </select>
+                    {/* Dropdown for inches */}
+                    <label htmlFor="inches">Inches:</label>
+                    <select id="inches" value={inches} onChange={handleInchesChange}>
+                        {inchesOptions.map((option) => (
+                            <option key={option} value={option}>
+                                {option}
+                            </option>
+                        ))}
+                    </select>
+                </div>
+                <div>
+                    {/* Display the selected height */}
+                    <p>Selected Height: {feet} feet {inches} inches</p>
+                </div>
+            </div>
+        )}
+        {/* New question about weight */}
+        {action === "About You" && (
+            <>
+                <h2>Weight</h2>
+                <div>
+                    <label htmlFor="weight">Weight (in lbs):</label>
+                    <input
+                        type="number"
+                        id="weight"
+                        value={weight}
+                        onChange={handleWeightChange}
+                        onBlur={handleBlur}
+                        min={50}
+                        max={600}
+                    />
+                    {/* Display warning message if weight is less than 50 */}
+                    {weight < 50 && (
+                        <p style={{ color: 'red', marginTop: '5px' }}>
+                            Please enter a weight greater than or equal to 50 lbs.
+                        </p>
+                    )}
+                </div>
+            </>
+        )}
+        {action === "About You" && (
+            <div>
+                <h2>Gender</h2>
+                <p>What is your biological gender?</p>
+                <div>
+                    <label>
+                       <input
+                            type="checkbox"
+                            value="Male"
+                            checked={gender === "Male"}
+                            onChange={(e) => setGender(e.target.checked ? "Male" : "")}
+                        />
+                        Male
+                    </label>
+                    <label>
+                        <input
+                            type="checkbox"
+                            value="Female"
+                            checked={gender === "Female"}
+                            onChange={(e) => setGender(e.target.checked ? "Female" : "")}
+                        />
+                        Female
+                    </label>
+                    <label>
+                        <input
+                            type="checkbox"
+                            value="Do not specify"
+                            checked={gender === "Do not specify"}
+                            onChange={(e) => setGender(e.target.checked ? "Do not specify" : "")}
+                        />
+                        Do not specify
+                    </label>
+                </div>
+            </div>
+        )}
             <div className="aiCameraSection">
                 <div className="app">
                     <h1>UGA CalTrack</h1>
