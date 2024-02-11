@@ -16,7 +16,23 @@ const UGACalories = () => {
     const [inches, setInches] = useState(0);
     const [weight, setWeight] = useState('');
     const [gender, setGender] = useState('');
+    const [activityLevel, setActivityLevel] = useState('');
+    const [age, setAge] = useState('');
 
+    const handleCalculateAndNavigate = () => {
+      // Perform the math calculation using the information from the questions
+      // For example:
+      const heightInInches = (feet*12) + inches;
+      const heightInCm = heightInInches*2.54;
+      const weightinKGS = weight/2.2;
+      const BMIResult = ((weight)/(heightInInches^2))*703;
+      const BMResult = (13.397*weightinKGS) + (4.799*heightInInches) - (5.677 * age) + 88.362;
+
+      warning.print(BMIResult);
+
+      // Navigate to the camera tab
+      setAction("Snap");
+  };
 
     const feetOptions = Array.from({ length: 9 }, (_, i) => i + 3);
     const inchesOptions = Array.from({ length: 12 }, (_, i) => i);
@@ -197,93 +213,127 @@ const handleBlur = () => {
         <div className="child">
         <div className="userInputSection"></div>
         {action === "About You" && (
-            <div>
-                <h2>User Input</h2>
-                <div>
-                    {/* Dropdown for feet */}
-                    <label htmlFor="feet">Feet:</label>
-                    <select id="feet" value={feet} onChange={handleFeetChange}>
-                        {feetOptions.map((option) => (
-                            <option key={option} value={option}>
-                                {option}
-                            </option>
-                        ))}
-                    </select>
-                    {/* Dropdown for inches */}
-                    <label htmlFor="inches">Inches:</label>
-                    <select id="inches" value={inches} onChange={handleInchesChange}>
-                        {inchesOptions.map((option) => (
-                            <option key={option} value={option}>
-                                {option}
-                            </option>
-                        ))}
-                    </select>
-                </div>
-                <div>
-                    {/* Display the selected height */}
-                    <p>Selected Height: {feet} feet {inches} inches</p>
-                </div>
-            </div>
-        )}
-        {/* New question about weight */}
-        {action === "About You" && (
-            <>
-                <h2>Weight</h2>
-                <div>
-                    <label htmlFor="weight">Weight (in lbs):</label>
-                    <input
-                        type="number"
-                        id="weight"
-                        value={weight}
-                        onChange={handleWeightChange}
-                        onBlur={handleBlur}
-                        min={50}
-                        max={600}
-                    />
-                    {/* Display warning message if weight is less than 50 */}
-                    {weight < 50 && (
-                        <p style={{ color: 'red', marginTop: '5px' }}>
-                            Please enter a weight greater than or equal to 50 lbs.
-                        </p>
-                    )}
-                </div>
-            </>
-        )}
-        {action === "About You" && (
-            <div>
-                <h2>Gender</h2>
-                <p>What is your biological gender?</p>
-                <div>
-                    <label>
-                       <input
-                            type="checkbox"
-                            value="Male"
-                            checked={gender === "Male"}
-                            onChange={(e) => setGender(e.target.checked ? "Male" : "")}
-                        />
-                        Male
-                    </label>
-                    <label>
-                        <input
-                            type="checkbox"
-                            value="Female"
-                            checked={gender === "Female"}
-                            onChange={(e) => setGender(e.target.checked ? "Female" : "")}
-                        />
-                        Female
-                    </label>
-                    <label>
-                        <input
-                            type="checkbox"
-                            value="Do not specify"
-                            checked={gender === "Do not specify"}
-                            onChange={(e) => setGender(e.target.checked ? "Do not specify" : "")}
-                        />
-                        Do not specify
-                    </label>
-                </div>
-            </div>
-        )}
+                    <div>
+                        <h2>User Input</h2>
+                        <div>
+                            {/* Dropdown for feet */}
+                            <label htmlFor="feet">Feet:</label>
+                            <select id="feet" value={feet} onChange={handleFeetChange}>
+                                {
+                                    feetOptions.map((option) => (
+                                        <option key={option} value={option}>
+                                            {option}
+                                        </option>
+                                    ))}
+                            </select>
+                            {/* Dropdown for inches */}
+                            <label htmlFor="inches">Inches:</label>
+                            <select id="inches" value={inches} onChange={handleInchesChange}>
+                                {
+                                    inchesOptions.map((option) => (
+                                      <option key={option} value={option}>
+                                          {option}
+                                      </option>
+                                  ))}
+                              </select>
+                          </div>
+                          <div>
+                              {/* Display the selected height */}
+                              <p>Selected Height: {feet} feet {inches} inches</p>
+                          </div>
+                      </div>
+                  )}
+                  {/* New question about weight */}
+                  {action === "About You" && (
+                      <>
+                          <h2>Weight</h2>
+                          <div>
+                              <label htmlFor="weight">Weight (in lbs):</label>
+                              <input
+                                  type="number"
+                                  id="weight"
+                                  value={weight}
+                                  onChange={handleWeightChange}
+                                  onBlur={handleBlur}
+                                  min={50}
+                                  max={600}
+                              />
+                              {/* Display warning message if weight is less than 50 */}
+                              {weight < 50 && (
+                                  <p style={{ color: 'red', marginTop: '5px' }}>
+                                      Please enter a weight between 50-300lbs.
+                                  </p>
+                              )}
+                          </div>
+                      </>
+                  )}
+                  {/* New Question about Age.*/}
+                  {action === "About You" && (
+                      <div>
+                          <h2>Age</h2>
+                          <div>
+                              <label htmlFor="age">Age:</label>
+                              <input
+                                  type="number"
+                                  id="age"
+                                  value={age}
+                                  onChange={(e) => setAge(e.target.value)}
+                              />
+                          </div>
+                      </div>
+                  )}
+                  {action === "About You" && (
+                      <div>
+                          <h2>Gender</h2>
+                          <p>What is your biological gender?</p>
+                          <div>
+                              <label>
+                                  <input
+                                      type="checkbox"
+                                      value="Male"
+                                      checked={gender === "Male"}
+                                      onChange={(e) => setGender(e.target.checked ? "Male" : "")}
+                                  />
+                                  Male
+                              </label>
+                              <label>
+                                  <input
+                                      type="checkbox"
+                                      value="Female"
+                                      checked={gender === "Female"}
+                                      onChange={(e) => setGender(e.target.checked ? "Female" : "")}
+                                  />
+                                  Female
+                              </label>
+                              <label>
+                                  <input
+                                      type="checkbox"
+                                      value="Do not specify"
+                                      checked={gender === "Do not specify"}
+                                      onChange={(e) => setGender(e.target.checked ? "Do not specify" : "")}
+                                  />
+                                  Do not specify
+                              </label>
+                          </div>
+                      </div>
+                  )}
+                  {action === "About You" && (
+                      <div>
+                          <h2>Activity Level</h2>
+                          <p>What is your activity level?</p>
+                          <select value={activityLevel} onChange={(e) => setActivityLevel(e.target.value)}>
+                              <option value="1">Sedentary: little or no exercise</option>
+                              <option value="2">Exercise 1-3 times/week</option>
+                              <option value="3">Exercise 4-5 times/week</option>
+                              <option value="4">Daily exercise or intense exercise 3-4 times/week</option>
+                              <option value="5">Intense exercise 6-7 times/week</option>
+                              <option value="6">Very intense exercise daily, or physical job</option>
+                          </select>
+                      </div>
+                  )}
+                  <div className="calculateButton">
+                      <button onClick={handleCalculateAndNavigate}>Calculate and Go to Camera</button>
+                  </div>
         {action === "Snap" && (
             <div className="aiCameraSection">
                 <div className="app">
