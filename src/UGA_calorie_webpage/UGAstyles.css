@@ -96,3 +96,11 @@ canvas {
   height: 50px; /* Adjust height as needed */
   margin-right: 10px; /* Add some spacing between the logo and the text */
 }
+
+.submit {
+  background-color: aqua;
+}
+
+.gray {
+  background-color: pink;
+}

@@ -8,7 +8,7 @@ const UGACalories = () => {
 
     const videoRef = useRef(null);
     const photoRef = useRef(null);
-    
+
     const [hasPhoto, setHasPhoto] = useState(false);
     const [videoError, setVideoError] = useState(false);
   
@@ -143,7 +143,7 @@ const UGACalories = () => {
        <div className="main">
         <div className="header">
             <button className={action==="About You"?"submit":"submit gray"} onClick={()=>{setAction("About You")}}>About You</button>
-            <button className={action==="Snap you Plate"?"submit":"submit gray"} onClick={()=>{setAction("Snap your Plate")}}>Snap your Plate</button>
+            <button className={action==="Snap"?"submit":"submit gray"} onClick={()=>{setAction("Snap")}}>Snap</button>
             <button className={action==="Your Stats"?"submit":"submit gray"} onClick={()=>{setAction("Your Stats")}}>Your Stats</button>
         </div>
         <div className="child">
