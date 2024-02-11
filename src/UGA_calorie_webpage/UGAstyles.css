@@ -1,142 +1,119 @@
-body {
-  font-family: 'Georgia', sans-serif; /* Change font-family to Georgia */
-  background-size: cover;
-  background-image: url(https://images.squarespace-cdn.com/content/v1/5c6090f7815512cc3c2008d4/1551053117928-E97Y685OM82ELE77LDVS/UGABDC-georgia-bolton-dining-10-dining-7686-M.jpg?format=1500w); /*Changed background aesthetic to appeal to users */
-  background-position: center;
+/* Reset some default styles for consistency across browsers */
+* {
   margin: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 30vh;
-  background-color: rgba(255, 255, 255, 0.9); /* Add a semi-transparent white background to improve text readability */
-  border: 2px solid red; /* Add a black border with a thickness of 2px */
-}
-/* Add this CSS to make the "UGA" text in the title red */
-.title .ugaColor {
-  color: red;
+body {
+  font-family: 'Arial', sans-serif;
+  background-image: url(https://images.squarespace-cdn.com/content/v1/5c6090f7815512cc3c2008d4/1551053117928-E97Y685OM82ELE77LDVS/UGABDC-georgia-bolton-dining-10-dining-7686-M.jpg?format=1500w);
+  color: black;
 }
 
-.small-image {
-  width: 30px; /* Adjust width as needed */
-  height: auto; /* Maintain aspect ratio */
-  margin-left: 10px; /* Add some spacing between the image and text */
-}
-
-
-.App {
-  text-align: center;
+.main {
+  max-width: 800px;
+  margin: 50px auto;
   padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
-  border-top: none; /* Remove the top border */
-  border-bottom: none; /* Remove the bottom border */
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
 }
 
-h1.title {
-  font-family: 'Georgia', sans-serif; /* Change font-family to Georgia */
-  font-size: 40px; /* Increase font size */
-  font-weight: 800; /* Make the title bolder */
-  color: rgb(1, 1, 1); /* Set default color to black */
-  text-align:center;
+.title {
+  text-align: center;
+  font-size: 36px;
+  margin-bottom: 20px;
+  color: #000;
 }
 
-.ugaColor {
-  color: red; /* Set color of "UGA" to red */
-}
-
-
-h1 .caltrack {
-  color: black; /* Set color of "CalTrack" to black */
-}
-
-
-p {
-  text-align:center;
-  color: solid black;
-}
-
-button.take-picture {
-  color: #000; /* Black */
-  font-weight: bold; /* Making the font bolder */
-  background-color: red; /* UGA Red */
-  padding: 10px 20px;
-  font-size: 16px;
-  border: black;
-  cursor: pointer;
-  border-radius: 5px;
-  margin-top: 10px;
-}
-
-button.take-picture:hover {
-  background-color: red; /* Darker shade of UGA Red */
-}
-
-.result {
-  display: none;
-  margin-top: 20px;
-}
-
-.result.hasPhoto {
-  display: block;
-}
-
-canvas {
-  width: 100%;
-  max-width: 450px;
-  border-radius: 8px;
-  margin-top: 10px;
-}
-.uga-logo {
-  background-image: url("https://1000logos.net/wp-content/uploads/2017/12/Color-University-of-Georgia-Logo.jpg");
-  background-size: contain; /* Ensure the logo fits within the span */
-  background-repeat: no-repeat; /* Prevent the logo from repeating */
-  display: inline-block; /* Allow for proper alignment with text */
-  width: 50px; /* Adjust width as needed */
-  height: 50px; /* Adjust height as needed */
-  margin-right: 10px; /* Add some spacing between the logo and the text */
+.header {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
 }
 
 .submit {
-  background-color: red;
+  background-color: #d9534f; /* Red */
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
 }
 
 .gray {
-  background-color: white;
+  background-color: #ccc;
 }
 
-.child{
-  background-color:white;
-  width:400px;
-  border-radius:20px;
-  width:400px;
-  height:700px;
+.child {
+  padding: 20px;
 }
-.ugared{
-  color:red;
+
+h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #d9534f; /* Red */
 }
-.title {
-  font-size: 2rem;
-  margin-bottom: 20px;
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.calculateButton {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.aiCameraSection {
+  text-align: center;
+}
+
+.camera {
   display: flex;
+  flex-direction: column;
   align-items: center;
+  margin-top: 20px;
 }
 
-h1.uga-logo {
-  background-image: url("https://cdn11.bigcommerce.com/s-ltea2gt6qi/images/stencil/1280x1280/products/9888/8670/C0843-Georgia__29128.1649968532.jpg?c=1");
-  background-size: cover;
-  width: 50px;
-  height: 50px;
-  margin-left: 10px;
+img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+  border-radius: 5px;
 }
 
-/* New CSS for positioning the logo to the right of "UGA" */
-.title .uga {
-  margin-right: 10px; /* Adjust margin-right as needed */
+button {
+  background-color: #d9534f; /* Red */
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+  border-radius: 5px;
+}
+
+.result {
+  margin-top: 20px;
+  background-color: #d9534f; /* Red */
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.hasPhoto {
+  border: 2px solid #d9534f; /* Red */
+  border-radius: 8px;
+  padding: 10px;
 }
