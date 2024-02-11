@@ -18,6 +18,10 @@ body {
   background-color: rgba(255, 255, 255, 0.9); /* Add a semi-transparent white background to improve text readability */
   border: 2px solid red; /* Add a black border with a thickness of 2px */
 }
+/* Add this CSS to make the "UGA" text in the title red */
+.title .ugaColor {
+  color: red;
+}
 
 .small-image {
   width: 30px; /* Adjust width as needed */
@@ -35,16 +39,18 @@ body {
   border-bottom: none; /* Remove the bottom border */
 }
 
-h1 {
+h1.title {
   font-family: 'Georgia', sans-serif; /* Change font-family to Georgia */
-  font-size: 30px; /* Increase font size */
+  font-size: 40px; /* Increase font size */
   font-weight: 800; /* Make the title bolder */
-  color: black; /* Set default color to black */
+  color: rgb(1, 1, 1); /* Set default color to black */
+  text-align:center;
 }
 
-h1 .uga {
+.ugaColor {
   color: red; /* Set color of "UGA" to red */
 }
+
 
 h1 .caltrack {
   color: black; /* Set color of "CalTrack" to black */
@@ -52,7 +58,7 @@ h1 .caltrack {
 
 
 p {
-
+  text-align:center;
   color: solid black;
 }
 
@@ -88,7 +94,7 @@ canvas {
   margin-top: 10px;
 }
 .uga-logo {
-  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS375RHHMk_W-h2EVR1vsOBzeYiamAeurHwIfvwsEdVkjnTt66LGJh8NybpaW-LYYqqKE&usqp=CA"); /* Path to your UGA logo image */
+  background-image: url("https://1000logos.net/wp-content/uploads/2017/12/Color-University-of-Georgia-Logo.jpg");
   background-size: contain; /* Ensure the logo fits within the span */
   background-repeat: no-repeat; /* Prevent the logo from repeating */
   display: inline-block; /* Allow for proper alignment with text */
@@ -98,13 +104,39 @@ canvas {
 }
 
 .submit {
-  background-color: aqua;
+  background-color: red;
 }
 
 .gray {
-  background-color: pink;
+  background-color: white;
 }
 
-.main {
-  margin-top: 50px;
+.child{
+  background-color:white;
+  width:400px;
+  border-radius:20px;
+  width:400px;
+  height:700px;
+}
+.ugared{
+  color:red;
+}
+.title {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+
+h1.uga-logo {
+  background-image: url("https://cdn11.bigcommerce.com/s-ltea2gt6qi/images/stencil/1280x1280/products/9888/8670/C0843-Georgia__29128.1649968532.jpg?c=1");
+  background-size: cover;
+  width: 50px;
+  height: 50px;
+  margin-left: 10px;
+}
+
+/* New CSS for positioning the logo to the right of "UGA" */
+.title .uga {
+  margin-right: 10px; /* Adjust margin-right as needed */
 }

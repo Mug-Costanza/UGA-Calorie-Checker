@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
-import './UGAstyles.css'
+import "./App.css";
+
 
 
 const UGACalories = () => {
@@ -28,7 +29,6 @@ const UGACalories = () => {
       const BMIResult = ((weight)/(heightInInches^2))*703;
       const BMResult = (13.397*weightinKGS) + (4.799*heightInInches) - (5.677 * age) + 88.362;
 
-      warning.print(BMIResult);
 
       // Navigate to the camera tab
       setAction("Snap");
@@ -204,14 +204,14 @@ const handleBlur = () => {
 
     return (
        <div className="main">
-        <h1 className="title">UGA CalTrack</h1>
         <div className="header">
             <button className={action==="About You"?"submit":"submit gray"} onClick={()=>{setAction("About You")}}>About You</button>
             <button className={action==="Snap"?"submit":"submit gray"} onClick={()=>{setAction("Snap")}}>Snap</button>
             <button className={action==="Your Stats"?"submit":"submit gray"} onClick={()=>{setAction("Your Stats")}}>Your Stats</button>
         </div>
         <div className="child">
-        <div className="userInputSection"></div>
+        <h1 className="title"><span className="ugaColor">UGA</span><span className="caltrack">CalTrack</span><span className="uga-logo"></span></h1>
+            <div className="userInputSection"></div>
         {action === "About You" && (
                     <div>
                         <h2>User Input</h2>
@@ -331,9 +331,11 @@ const handleBlur = () => {
                           </select>
                       </div>
                   )}
+                  {action === "About You" && (
                   <div className="calculateButton">
                       <button onClick={handleCalculateAndNavigate}>Calculate and Go to Camera</button>
                   </div>
+                  )}
         {action === "Snap" && (
             <div className="aiCameraSection">
                 <div className="app">
