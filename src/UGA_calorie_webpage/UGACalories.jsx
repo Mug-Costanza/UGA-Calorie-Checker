@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react'
-import "./App.css";
-
+import './UGAstyles.css'
 
 
 const UGACalories = () => {
@@ -26,8 +25,26 @@ const UGACalories = () => {
       const heightInInches = (feet*12) + inches;
       const heightInCm = heightInInches*2.54;
       const weightinKGS = weight/2.2;
-      const BMIResult = ((weight)/(heightInInches^2))*703;
-      const BMResult = (13.397*weightinKGS) + (4.799*heightInInches) - (5.677 * age) + 88.362;
+      
+      if (gender == "Male"){
+        const BMIResult = ((weight)/(heightInInches * heightInInches))*703;
+        const BMResult = (13.397*weightinKGS) + (4.799*heightInCm) - (5.677 * age) + 88.362;
+        console.log(BMIResult);
+        console.log(BMResult);
+      }else  if (gender == "Female"){
+        
+        const BMIResult = ((weight)/(heightInInches * heightInInches))*703;
+        const BMResult = (9.247*weightinKGS) + (3.098* heightInCm) - (4.330 * age) + 447.593
+        console.log(BMIResult);
+        console.log(BMResult);
+      } else {
+
+        const BMIResult = ((weight)/(heightInInches * heightInInches))*703;
+        const BMResult = (13.397*weightinKGS) + (4.799*heightInCm) - (5.677 * age) + 88.362;
+        console.log(BMIResult);
+        console.log(BMResult);
+      }
+
 
       
       // Navigate to the camera tab
@@ -65,6 +82,21 @@ const handleBlur = () => {
       // Display a warning message
       console.warn('Please enter a weight greater than or equal to 50 lbs.');
   }
+
+  
+  if (age < 8 || age > 80) {
+    // Display a warning message
+    console.warn('Please enter an age between 8 and 80.');
+    // Reset the age to 8 if it's less than 8
+    if (age < 8) {
+        setAge(8);
+    }
+    // Reset the age to 80 if it's greater than 80
+    if (age > 80) {
+        setAge(80);
+    }
+}
+
 };
   
     
@@ -204,14 +236,14 @@ const handleBlur = () => {
 
     return (
        <div className="main">
+        <h1 className="title">UGA CalTrack</h1>
         <div className="header">
             <button className={action==="About You"?"submit":"submit gray"} onClick={()=>{setAction("About You")}}>About You</button>
             <button className={action==="Snap"?"submit":"submit gray"} onClick={()=>{setAction("Snap")}}>Snap</button>
             <button className={action==="Your Stats"?"submit":"submit gray"} onClick={()=>{setAction("Your Stats")}}>Your Stats</button>
         </div>
         <div className="child">
-        <h1 className="title"><span className="ugaColor">UGA</span><span className="caltrack">CalTrack</span><span className="uga-logo"></span></h1>
-            <div className="userInputSection"></div>
+        <div className="userInputSection"></div>
         {action === "About You" && (
                     <div>
                         <h2>User Input</h2>
@@ -278,6 +310,7 @@ const handleBlur = () => {
                                   id="age"
                                   value={age}
                                   onChange={(e) => setAge(e.target.value)}
+                                  onBlur={handleBlur}
                               />
                           </div>
                       </div>
